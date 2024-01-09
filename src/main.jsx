@@ -11,8 +11,14 @@ import router from "./router/router";
 // style import
 import "./index.css";
 
+// redux
+import { store } from "./app/store";
+import { Provider } from "react-redux";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={router}></RouterProvider>
+    </Provider>
   </React.StrictMode>
 );

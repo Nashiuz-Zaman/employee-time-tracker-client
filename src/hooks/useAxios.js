@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // server url
-import { serverUrl } from "../uiData/serverUrl";
+import { serverUrl } from "../data/serverUrl";
 
 const axiosCustom = axios.create({
   baseURL: serverUrl,

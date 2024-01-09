@@ -19,7 +19,7 @@ import useEscapeClose from "../../../hooks/useEscapeClose";
 import useAuth from "../../../hooks/useAuth";
 
 // must import data here to make this component work
-import { navOptions } from "../../../uiData/navigationOptions";
+import { navOptions } from "../../../data/navigationOptions";
 // white logo import
 import logoWhite from "./../../../assets/websiteLogo/logo-white.webp";
 

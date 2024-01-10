@@ -13,7 +13,7 @@ const BrandLogo = ({
     <div className={`w-max ${modifyClasses}`}>
       <Link className="block w-full h-full" to="/">
         <img
-          className={`block h-[3rem] ${imageModifyClasses}`}
+          className={`block h-[1.5rem] ${imageModifyClasses}`}
           src={imageSource}
           alt="Website Logo"
         />

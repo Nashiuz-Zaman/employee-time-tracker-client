@@ -26,7 +26,7 @@ const Header = ({ modifyClasses = "" }) => {
           <div className="justify-self-center sm:justify-self-start">
             <BrandLogo
               imageSource={logoPrimary}
-              imageModifyClasses="h-[3rem]"
+              imageModifyClasses="xl:!h-[2.5rem]"
             />
           </div>
 

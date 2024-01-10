@@ -4,13 +4,16 @@ import { useState } from "react";
 
 // react icons
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import { FaUser } from "react-icons/fa";
+
+// hooks
+import useLoginForm from "../../../hooks/useLoginForm";
 
 // shared component imports
 import ButtonBtn from "./../ButtonBtn/ButtonBtn";
 
 const ClockInForm = ({ modifyClasses }) => {
   const [showPassword, setShowPassword] = useState(false);
+  const { loginErrors, handleLoginEmail } = useLoginForm();
 
   // common styles for input and label jsx elements
   const inputClasses =
@@ -28,15 +31,19 @@ const ClockInForm = ({ modifyClasses }) => {
       </h2>
 
       {/* form */}
-      <form onSubmit={null} className="w-full space-y-4 lg:space-y-5">
+      <form
+        noValidate
+        onSubmit={handleLoginEmail}
+        className="w-full space-y-4 lg:space-y-5"
+      >
         {/* email field */}
         <label className="block">
-          <span className={labelClasses}>Employee ID</span>
+          <span className={labelClasses}>Employee Email</span>
           <input
             className={inputClasses}
-            type="text"
-            name="employeeId"
-            placeholder="Employee ID"
+            type="email"
+            name="email"
+            placeholder="Employee Email"
           />
         </label>
 
@@ -71,9 +78,9 @@ const ClockInForm = ({ modifyClasses }) => {
           </div>
         </label>
 
-        {/* {clockFormErrors?.length > 0 && (
+        {loginErrors?.length > 0 && (
           <div className="space-y-1 mt-4">
-            {clockFormErrors.map((error) => {
+            {loginErrors.map((error) => {
               return (
                 <p
                   key={error}
@@ -84,7 +91,7 @@ const ClockInForm = ({ modifyClasses }) => {
               );
             })}
           </div>
-        )} */}
+        )}
 
         <ButtonBtn text="Clock In" modifyClasses="mx-auto block !mt-10" />
       </form>

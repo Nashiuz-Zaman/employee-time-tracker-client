@@ -20,15 +20,10 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  signInWithPopup,
-  GoogleAuthProvider,
 } from "firebase/auth";
 
 // create auth instance
 const auth = getAuth(app);
-
-// create google provider instance
-const googleProvider = new GoogleAuthProvider();
 
 // hooks
 import useToast from "./useToast";
@@ -109,12 +104,6 @@ const useAuth = () => {
     axiosCustom,
   ]);
 
-  // login with google function
-  const loginGoogle = () => {
-    dispatch(setAppLoading(true));
-    return signInWithPopup(auth, googleProvider);
-  };
-
   // user creation with email and password
   const signup = (email, password) => {
     dispatch(setAppLoading(true));
@@ -172,7 +161,6 @@ const useAuth = () => {
     registrationErrors,
     // firebase auth related functions
     signup,
-    loginGoogle,
     loginEmail,
     updateUserProfile,
     logout,

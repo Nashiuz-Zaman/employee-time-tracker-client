@@ -42,7 +42,7 @@ const Header = ({ modifyClasses = "" }) => {
             )}
 
             {!appLoading && !profileData && (
-              <LinkBtn text="Sign In" url="/auth/login" />
+              <LinkBtn text="Employee Login" url="/auth/login" />
             )}
 
             {/* if app is finished loading and user is truthy, show the userprofile */}

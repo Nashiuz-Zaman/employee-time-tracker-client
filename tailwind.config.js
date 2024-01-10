@@ -41,7 +41,7 @@ export default {
         lightBorder: "#ddd",
       },
       fontFamily: {
-        default: "'Poppins', sans-serif",
+        default: "'Inter', sans-serif",
       },
       borderRadius: {
         default: "5px",

@@ -4,12 +4,12 @@ import Banner from "./Banner/Banner";
 
 const Home = () => {
   return (
-    <div>
-      <InnerContainer>
-        <section>
+    <div className="mt-sectionGapMd">
+      <section className="mb-sectionGapSm">
+        <InnerContainer>
           <Banner />
-        </section>
-      </InnerContainer>
+        </InnerContainer>
+      </section>
     </div>
   );
 };

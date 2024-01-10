@@ -8,7 +8,7 @@ import Footer from "../shared/Footer/Footer";
 function RootLayout() {
   return (
     <>
-      <Header modifyClasses="mb-[5rem]" />
+      <Header />
       <Outlet />
       <Footer />
     </>

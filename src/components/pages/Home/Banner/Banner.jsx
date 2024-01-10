@@ -1,5 +1,6 @@
 // components
 import BannerText from "../../../shared/BannerText/BannerText";
+import ClockInForm from "../../../shared/ClockInForm/ClockInForm";
 
 // data
 import { homeTopBannerTextContent } from "../../../../data/homeUiContent";
@@ -16,7 +17,9 @@ const Banner = () => {
       </div>
 
       {/* banner clock in */}
-      <div>sds</div>
+      <div>
+        <ClockInForm />
+      </div>
     </div>
   );
 };

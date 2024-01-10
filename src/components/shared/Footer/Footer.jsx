@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#111111] mt-auto py-8">
       <InnerContainer>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-0 items-center justify-between">
           {/* website logo */}
           <BrandLogo imageSource={logoWhite} />
 

@@ -10,7 +10,7 @@ const Banner = () => {
   const { heading, description1 } = homeTopBannerTextContent;
 
   return (
-    <div className="grid grid-cols-1 gap-12 sm:gap-[5rem] lg:gap-0 lg:grid-cols-2 items-center">
+    <div className="grid grid-cols-1 gap-[5rem] lg:grid-cols-2 items-center">
       {/* banner text part */}
       <div>
         <BannerText heading={heading} description1={description1} />

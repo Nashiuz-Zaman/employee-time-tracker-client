@@ -16,19 +16,20 @@ const ClockInForm = ({ modifyClasses }) => {
   const inputClasses =
     "block w-full rounded-default border border-textLight py-2 px-4 text-textPrimary";
 
-  const labelClasses = '"block font-bold mb-2';
+  const labelClasses = "block font-bold mb-4";
 
   return (
-    <div className={`w-full xsm:w-[20rem] mx-auto ${modifyClasses}`}>
+    <div
+      className={`w-[90%] sm:w-[50%] lg:w-[90%] xl:w-[70%] 3xl:w-[60%] mx-auto ${modifyClasses}`}
+    >
       {/* heading */}
-      <h2 className="capitalize mb-elementGapSm text-center text-2xl">
-        Goodluck with work today!
+      <h2 className="font-bold text-center lg:text-left text-primary capitalize mb-4 lg:mb-5 text-2xl">
+        Start/Resume your shift
       </h2>
 
       {/* form */}
-      <form noValidate onSubmit={null} className="w-full space-y-4">
+      <form onSubmit={null} className="w-full space-y-4 lg:space-y-5">
         {/* email field */}
-
         <label className="block">
           <span className={labelClasses}>Employee ID</span>
           <input
@@ -40,7 +41,6 @@ const ClockInForm = ({ modifyClasses }) => {
         </label>
 
         {/* password field */}
-
         <label className="block">
           <span className={labelClasses}>Password</span>
           <div className="relative">

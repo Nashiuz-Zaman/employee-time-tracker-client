@@ -117,7 +117,7 @@ const RegistrationForm = ({ loading = false, modifyClasses }) => {
         <ButtonBtn
           loading={loading}
           text="Register"
-          modifyClasses="mx-auto block mt-10 mb-4"
+          modifyClasses="mx-auto block mt-10 mb-6"
         />
 
         <p className="text-sm text-center">
@@ -128,7 +128,7 @@ const RegistrationForm = ({ loading = false, modifyClasses }) => {
         </p>
       </form>
 
-      <p className="text-center my-5">Or</p>
+      <p className="text-center my-2">Or</p>
 
       <Link to="/" className="block text-primary text-center hover:underline">
         Back to Home

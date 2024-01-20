@@ -1,3 +1,6 @@
+// react
+import { useEffect } from "react";
+
 // react router import
 import { RouterProvider } from "react-router-dom";
 
@@ -15,8 +18,24 @@ import BackdropBlur from "../shared/BackdropBlur/BackdropBlur";
 // redux
 import { useSelector } from "react-redux";
 
+// server url
+import { serverUrl } from "../../data/serverUrl";
+
 const PrimaryComponent = () => {
   const { open } = useSelector((store) => store.backdrop);
+
+  useEffect(() => {
+    const sendTimeData = () => {
+      navigator.sendBeacon(`${serverUrl}/test`);
+    };
+
+    window.addEventListener("beforeunload", sendTimeData);
+
+    return () => {
+      window.removeEventListener("beforeunload", sendTimeData);
+      console.log("katie");
+    };
+  }, []);
 
   return (
     <div className="text-textPrimary font-default min-h-screen flex flex-col max-w-[120rem] mx-auto overflow-x-hidden">

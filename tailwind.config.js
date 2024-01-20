@@ -43,7 +43,7 @@ export default {
       },
       borderRadius: {
         default: "5px",
-        defaultLg: "15px",
+        defaultLg: "10px",
       },
     },
   },

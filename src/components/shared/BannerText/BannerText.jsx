@@ -10,7 +10,7 @@ function BannerText({ heading, description1 }) {
           {heading}
         </h1>
 
-        <p className="font-bold text-3xl sm:text-4xl md:text-5xl 3xl:text-6xl">
+        <p className="font-bold text-3xl sm:text-4xl md:text-4xl 3xl:text-5xl">
           {description1}
         </p>
       </div>

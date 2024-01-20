@@ -27,7 +27,7 @@ const RegisterPage = () => {
   }, [dispatch, setRegistrationErrors]);
 
   return (
-    <div className="min-h-screen flex justify-center items-center py-sectionGapSm md:py-sectionGapMd lg:py-sectionGapSm">
+    <div className="min-h-screen flex justify-center items-center py-customSm md:py-custom2md lg:py-customSm">
       <div>
         <div>
           <RegistrationFormWithImage

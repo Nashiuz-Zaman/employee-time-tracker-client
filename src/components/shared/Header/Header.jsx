@@ -19,9 +19,9 @@ const Header = ({ modifyClasses = "" }) => {
   const { profileData, appLoading } = useAuth();
 
   return (
-    <header className={`py-elementGapMd ${modifyClasses}`}>
+    <header className={`py-customXsm ${modifyClasses}`}>
       <InnerContainer>
-        <div className="grid grid-cols-1 gap-elementGapMd sm:gap-0 sm:grid-cols-2 items-center">
+        <div className="grid grid-cols-1 gap-custompy-customXsm sm:gap-0 sm:grid-cols-2 items-center">
           {/* website logo */}
           <div className="justify-self-center sm:justify-self-start">
             <BrandLogo

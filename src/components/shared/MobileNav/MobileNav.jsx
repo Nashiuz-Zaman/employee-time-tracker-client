@@ -91,7 +91,7 @@ const MobileNav = ({ modifyClasses = "" }) => {
               logout();
               closeMobileNav();
             }}
-            modifyClasses="mt-elementGapSm"
+            modifyClasses="mt-custom2xsm"
           />
         )}
       </nav>

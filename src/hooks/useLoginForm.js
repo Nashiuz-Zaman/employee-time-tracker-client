@@ -7,6 +7,9 @@ import useAuth from "./useAuth";
 import useAxios from "./useAxios";
 import useToast from "./useToast";
 
+// api endpoints
+import { userAuthEndpoint } from "../data/apiData";
+
 const useLoginForm = () => {
   // extract functions from auth context
   const {
@@ -24,9 +27,6 @@ const useLoginForm = () => {
 
   // axios
   const { axiosCustom } = useAxios();
-
-  // // extract different login and registration related states from this hook
-  // const { loginInfo, setLoginInfo } = useLoginRegistrationProvider();
 
   // create the navigation function
   const navigate = useNavigate();
@@ -56,6 +56,7 @@ const useLoginForm = () => {
   // handle normal login
   const handleLoginEmail = async (e) => {
     e.preventDefault();
+
     // reset errors
     dispatch(setLoginErrors([]));
 
@@ -82,13 +83,14 @@ const useLoginForm = () => {
 
       //  if firebase login is successful, check database for profile data
       if (result.user) {
-        const loginResponse = await axiosCustom.post("/login", {
+        const loginResponse = await axiosCustom.post(userAuthEndpoint, {
           email: result.user.email,
         });
 
         if (loginResponse.data.success) {
           dispatch(setProfileData(loginResponse.data.user));
           dispatch(setUserShouldExist(true));
+
           // set profile and the jwt token in the localstorage
           localStorage.setItem("tokenExists", loginResponse.data.tokenExists);
 

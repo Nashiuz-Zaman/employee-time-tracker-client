@@ -4,8 +4,8 @@ import Banner from "./Banner/Banner";
 
 const Home = () => {
   return (
-    <div className="mt-sectionGapMd">
-      <section className="mb-sectionGapSm">
+    <div className="pb-custom2md grow flex flex-col">
+      <section className="grow flex justify-center items-center">
         <InnerContainer>
           <Banner />
         </InnerContainer>

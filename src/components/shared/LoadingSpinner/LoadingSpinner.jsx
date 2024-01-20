@@ -9,6 +9,8 @@ const LoadingSpinner = ({
   modifyClasses = "",
   modifyInnerContainerClasses = "",
   onlyLoader = false,
+  textSizeClass = "text-base",
+  loaderSizeClass = "text-base",
 }) => {
   return (
     <div className={`${modifyClasses}`}>
@@ -17,13 +19,15 @@ const LoadingSpinner = ({
       >
         {/* text */}
         {!onlyLoader && (
-          <div style={{ fontSize: "inherit", color: "inherit" }}>{text}</div>
+          <p style={{ color: "inherit" }} className={`${textSizeClass}`}>
+            {text}
+          </p>
         )}
 
         {/* loading spinner */}
         <ImSpinner8
-          style={{ fontSize: "inherit", color: "inherit" }}
-          className="text-primaryLight animate-spin font-bold"
+          style={{ color: "inherit" }}
+          className={`animate-spin ${loaderSizeClass}`}
         />
       </div>
     </div>
@@ -35,6 +39,8 @@ LoadingSpinner.propTypes = {
   onlyLoader: PropTypes.bool,
   modifyInnerContainerClasses: PropTypes.string,
   modifyClasses: PropTypes.string,
+  loaderSizeClass: PropTypes.string,
+  textSizeClass: PropTypes.string,
 };
 
 export default LoadingSpinner;

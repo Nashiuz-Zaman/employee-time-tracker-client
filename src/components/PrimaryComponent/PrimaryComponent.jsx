@@ -24,18 +24,18 @@ import { serverUrl } from "../../data/serverUrl";
 const PrimaryComponent = () => {
   const { open } = useSelector((store) => store.backdrop);
 
-  useEffect(() => {
-    const sendTimeData = () => {
-      navigator.sendBeacon(`${serverUrl}/test`);
-    };
+  // useEffect(() => {
+  //   const sendTimeData = () => {
+  //     navigator.sendBeacon(`${serverUrl}`);
+  //   };
 
-    window.addEventListener("beforeunload", sendTimeData);
+  //   window.addEventListener("beforeunload", sendTimeData);
 
-    return () => {
-      window.removeEventListener("beforeunload", sendTimeData);
-      console.log("katie");
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("beforeunload", sendTimeData);
+  //     sendTimeData();
+  //   };
+  // }, []);
 
   return (
     <div className="text-textPrimary font-default min-h-screen flex flex-col max-w-[120rem] mx-auto overflow-x-hidden">

@@ -10,9 +10,9 @@ import useAuth from "../../../hooks/useAuth";
 import useRedirectDashboard from "../../../hooks/useRedirectDashboard";
 
 // data
-import { authImage } from "./../../../data/authUIContent";
+import { authImage } from "../../../data/authUIContent";
 
-const RegisterPage = () => {
+const RegistrationPage = () => {
   const { appLoading, dispatch, setRegistrationErrors, profileData } =
     useAuth();
   const { state } = useLocation();
@@ -40,4 +40,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default RegistrationPage;

@@ -91,7 +91,7 @@ const LoginForm = ({ modifyClasses }) => {
 
         <p className="text-sm text-center">
           Don&apos;t have an account?{" "}
-          <Link className="text-primary font-semibold" to={"/register"}>
+          <Link className="text-primary font-semibold" to={"/registration"}>
             Register
           </Link>
         </p>

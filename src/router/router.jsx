@@ -8,7 +8,7 @@ import AuthLayout from "./../components/layouts/AuthLayout";
 // page components
 import Home from "../components/pages/Home/Home";
 import LoginPage from "./../components/pages/LoginPage/LoginPage";
-import RegistrationPage from "./../components/pages/RegisterPage/RegistrationPage";
+import RegistrationPage from "./../components/pages/RegistrationPage/RegistrationPage";
 
 const router = createBrowserRouter([
   {

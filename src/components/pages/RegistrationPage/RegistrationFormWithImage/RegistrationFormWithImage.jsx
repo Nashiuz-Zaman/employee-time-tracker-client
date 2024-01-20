@@ -16,7 +16,7 @@ const RegistrationFormWithImage = ({ imageSource, appLoading }) => {
 
   return (
     <div
-      className={`grid grid-cols-1 2md:grid-cols-2 lg:grid-cols-[1.5fr_1fr]  rounded-2xl overflow-hidden mx-auto w-[90%] md:w-[80%] 2md:w-[90%] lg:w-[56rem] 2xl:w-[60rem] shadow-large form-animation min-h-[33rem]`}
+      className={`grid grid-cols-1 2md:grid-cols-2 lg:grid-cols-[1.5fr_1fr]  rounded-2xl overflow-hidden mx-auto w-[90%] md:w-[80%] 2md:w-[90%] lg:w-[56rem] 2xl:w-[60rem] shadow-large form-animation`}
     >
       {/* image */}
       <div className="w-full h-full overflow-hidden">

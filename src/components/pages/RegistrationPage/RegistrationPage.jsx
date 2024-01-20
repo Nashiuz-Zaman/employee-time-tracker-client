@@ -19,6 +19,7 @@ const RegistrationPage = () => {
 
   //if user profile already exists then redirect to dashboard
   useRedirectDashboard(profileData, state);
+
   // use the effect's clean up function to empty the registration fields
   useEffect(() => {
     return () => {

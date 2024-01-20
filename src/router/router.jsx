@@ -8,7 +8,7 @@ import AuthLayout from "./../components/layouts/AuthLayout";
 // page components
 import Home from "../components/pages/Home/Home";
 import LoginPage from "./../components/pages/LoginPage/LoginPage";
-import RegisterPage from "./../components/pages/RegisterPage/RegisterPage";
+import RegistrationPage from "./../components/pages/RegisterPage/RegistrationPage";
 
 const router = createBrowserRouter([
   {
@@ -22,9 +22,9 @@ const router = createBrowserRouter([
     children: [{ path: "/login", element: <LoginPage /> }],
   },
   {
-    path: "/register",
+    path: "/registration",
     element: <AuthLayout />,
-    children: [{ path: "/register", element: <RegisterPage /> }],
+    children: [{ path: "/registration", element: <RegistrationPage /> }],
   },
 ]);
 

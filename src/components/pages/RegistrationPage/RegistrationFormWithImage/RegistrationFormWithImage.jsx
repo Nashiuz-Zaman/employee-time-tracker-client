@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 // components
-import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import ButtonBtn from "../../../shared/ButtonBtn/ButtonBtn";
 
@@ -30,13 +29,7 @@ const RegistrationFormWithImage = ({ imageSource, appLoading }) => {
 
       {/* Registration form */}
       <div className="w-full">
-        {appLoading && (
-          <LoadingSpinner
-            modifyClasses="h-full flex justify-center items-enter text-xl"
-            text="Registering"
-          />
-        )}
-        {!appLoading && !userAlreadyRegistered && <RegistrationForm />}
+        {!userAlreadyRegistered && <RegistrationForm loading={appLoading} />}
 
         {/* if user exists then show the user exists message */}
         {!appLoading && userAlreadyRegistered && (

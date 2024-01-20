@@ -9,6 +9,9 @@ import useAxios from "./../hooks/useAxios";
 // normal axios import
 import axios from "axios";
 
+// api endpoints
+import { userCreationEndpoint, userCheckEndpoint } from "../data/apiData";
+
 // img bb api related
 const imageUploadAPIKey = import.meta.env.VITE_imgbbApiKey;
 const imageUploadAPI = `https://api.imgbb.com/1/upload?key=${imageUploadAPIKey}`;
@@ -30,10 +33,6 @@ const useRegistrationForm = () => {
 
   // axios extraction
   const { axiosCustom } = useAxios();
-
-  // // extract functions from login and registration context
-  // const { registrationInfo, setRegistrationInfo } =
-  //   useLoginRegistrationProvider();
 
   // create the navigate function
   const navigate = useNavigate();
@@ -110,7 +109,7 @@ const useRegistrationForm = () => {
 
     const foundErrors = validateInputs(dataObject);
 
-    // if there are erros return from here
+    // if there are errors return from here
     if (foundErrors.length > 0) {
       dispatch(setRegistrationErrors(foundErrors));
       return;
@@ -119,12 +118,9 @@ const useRegistrationForm = () => {
     // if there are no basic errors code will reach this line
     try {
       dispatch(setAppLoading(true));
-      const userExistsResponse = await axiosCustom.post(
-        "/users/checkExistence",
-        {
-          email: dataObject.email,
-        }
-      );
+      const userExistsResponse = await axiosCustom.post(userCheckEndpoint, {
+        email: dataObject.email,
+      });
 
       // if user exists
       if (userExistsResponse.data.userExists) {
@@ -144,7 +140,7 @@ const useRegistrationForm = () => {
         if (imageUploadResponse.data.success) {
           const signupResponse = await signup(
             dataObject.email,
-            dataObject.password
+            dataObject.password === "" ? "test" : dataObject.password
           );
 
           if (signupResponse.user) {
@@ -155,16 +151,19 @@ const useRegistrationForm = () => {
             );
 
             // save new user object to database
-            const user = {
-              name: dataObject.userName,
+            const websiteUser = {
+              fullname: dataObject.userName,
               password: dataObject.password,
               email: dataObject.email,
               imageSource: imageUploadResponse.data.data.display_url,
-              role: "user",
+              position: "developer",
             };
 
             // create user api call
-            const userCreationResponse = await axiosCustom.post("/users", user);
+            const userCreationResponse = await axiosCustom.post(
+              userCreationEndpoint,
+              websiteUser
+            );
 
             // if success
             if (userCreationResponse.data.success) {

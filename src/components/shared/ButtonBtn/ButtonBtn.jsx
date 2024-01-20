@@ -1,12 +1,16 @@
 // react imports
 import PropTypes from "prop-types";
 
+// component
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+
 const ButtonBtn = ({
   text,
   onClickFunction = null,
   colorTheme = "",
   modifyClasses = "",
   theme = "light",
+  loading = false,
 }) => {
   // common classes
   const outlinedClasses =
@@ -27,7 +31,7 @@ const ButtonBtn = ({
   const blackClasses =
     "bg-blackLight border border-blackLight hover:bg-textPrimary hover:border-textPrimary text-white";
 
-  const allClasses = `block w-max capitalize transition-all duration-default rounded-defaultLg text-center px-6 py-2 3xl:text-xl 2xl:py-3 ${modifyClasses}`;
+  const allClasses = `block min-w-[8rem] w-max capitalize transition-all duration-default rounded-defaultLg text-center px-6 py-2 3xl:text-xl 2xl:py-3 ${modifyClasses}`;
 
   return (
     <button
@@ -43,7 +47,10 @@ const ButtonBtn = ({
           : primaryClasses
       } ${allClasses}`}
     >
-      {text}
+      {loading && (
+        <LoadingSpinner onlyLoader={true} loaderSizeClass={"3xl:text-2xl"} />
+      )}
+      {!loading && text}
     </button>
   );
 };
@@ -54,6 +61,7 @@ ButtonBtn.propTypes = {
   colorTheme: PropTypes.string,
   modifyClasses: PropTypes.string,
   theme: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default ButtonBtn;

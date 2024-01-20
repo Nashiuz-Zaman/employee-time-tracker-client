@@ -17,7 +17,7 @@ import ButtonBtn from "../../../shared/ButtonBtn/ButtonBtn";
 
 import FileUploadBtn from "../../../shared/FileUploadBtn/FileUploadBtn";
 
-const RegistrationForm = ({ modifyClasses }) => {
+const RegistrationForm = ({ loading = false, modifyClasses }) => {
   const { registrationErrors, handleSubmit } = useRegistrationForm();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -36,82 +36,89 @@ const RegistrationForm = ({ modifyClasses }) => {
 
       {/* form */}
       <form noValidate onSubmit={handleSubmit} className="w-full">
-        {/* username field */}
-        <div className="mb-4">
-          <input
-            className={inputClasses}
-            name="name"
-            type="text"
-            id="fullname"
-            placeholder="Full Name"
-          />
-        </div>
-
-        {/* photo upload button */}
-        <div className="mb-4 grid grid-cols-2 items-center">
-          <p>Your Photo</p>
-
-          <FileUploadBtn>
-            Browse <IoCloudUpload className="text-xl" />
-          </FileUploadBtn>
-        </div>
-
-        {/* email field */}
-        <div className="mb-4">
-          <input
-            className={inputClasses}
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Email"
-          />
-        </div>
-
-        {/* password field */}
-        <div className="relative">
-          <input
-            className={inputClasses}
-            type={showPassword ? "text" : "password"}
-            id="password"
-            name="password"
-            placeholder="Password"
-          />
-
-          {/* show/no show password buttons */}
-          <button
-            aria-label="Show or not show password button"
-            type="button"
-            className="block w-max absolute top-1/2 -translate-y-1/2 right-3 text-textPrimary"
-            onClick={(e) => {
-              e.preventDefault();
-              setShowPassword((prev) => !prev);
-            }}
-          >
-            {showPassword ? (
-              <IoEyeOff className="text-xl" />
-            ) : (
-              <IoEye className="text-xl" />
-            )}
-          </button>
-        </div>
-
-        {/* show errors here */}
-        {registrationErrors?.length > 0 && (
-          <div className="space-y-1 mt-4">
-            {registrationErrors.map((error) => {
-              return (
-                <p
-                  key={error}
-                  className="text-sm text-center font-semibold text-red-600"
-                >
-                  * {error}
-                </p>
-              );
-            })}
+        <div className={`${loading ? "opacity-50" : "opacity-100"}`}>
+          {/* username field */}
+          <div className="mb-4">
+            <input
+              className={inputClasses}
+              name="name"
+              type="text"
+              id="fullname"
+              placeholder="Full Name"
+            />
           </div>
-        )}
 
-        <ButtonBtn text="Register" modifyClasses="mx-auto block mt-10 mb-4" />
+          {/* photo upload button */}
+          <div className="mb-4 grid grid-cols-2 items-center">
+            <p>Your Photo</p>
+
+            <FileUploadBtn>
+              Browse <IoCloudUpload className="text-xl" />
+            </FileUploadBtn>
+          </div>
+
+          {/* email field */}
+          <div className="mb-4">
+            <input
+              className={inputClasses}
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+            />
+          </div>
+
+          {/* password field */}
+          <div className="relative">
+            <input
+              className={inputClasses}
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              placeholder="Password"
+            />
+
+            {/* show/no show password buttons */}
+            <button
+              aria-label="Show or not show password button"
+              type="button"
+              className="block w-max absolute top-1/2 -translate-y-1/2 right-3 text-textPrimary"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowPassword((prev) => !prev);
+              }}
+            >
+              {showPassword ? (
+                <IoEyeOff className="text-xl" />
+              ) : (
+                <IoEye className="text-xl" />
+              )}
+            </button>
+          </div>
+
+          {/* show errors here */}
+          {registrationErrors?.length > 0 && (
+            <div className="space-y-1 mt-4">
+              {registrationErrors.map((error) => {
+                return (
+                  <p
+                    key={error}
+                    className="text-sm text-center font-semibold text-red-600"
+                  >
+                    * {error}
+                  </p>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* submit button */}
+        <ButtonBtn
+          loading={loading}
+          text="Register"
+          modifyClasses="mx-auto block mt-10 mb-4"
+        />
 
         <p className="text-sm text-center">
           Already have an account?{" "}
@@ -131,6 +138,7 @@ const RegistrationForm = ({ modifyClasses }) => {
 };
 
 RegistrationForm.propTypes = {
+  loading: PropTypes.bool,
   modifyClasses: PropTypes.string,
 };
 

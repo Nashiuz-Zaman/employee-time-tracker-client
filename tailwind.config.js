@@ -37,6 +37,7 @@ export default {
         textLight: "#1c1b1b99",
         lightGray: "#f5f5f5",
         lightBorder: "#ddd",
+        blackLight: "#111",
       },
       fontFamily: {
         default: "'Inter', sans-serif",

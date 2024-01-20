@@ -32,7 +32,7 @@ const ButtonBtn = ({
     "bg-blackLight border border-blackLight hover:bg-textPrimary hover:border-textPrimary text-white";
 
   const dangerClasses =
-    "bg-red-600 border border-red-600 hover:bg-red-500 hover:border-red-500 text-white";
+    "bg-red-700 border border-red-700 hover:bg-red-500 hover:border-red-500 text-white";
 
   const allClasses = `block min-w-[8rem] w-max capitalize transition-all duration-default rounded-defaultLg text-center px-6 py-2 3xl:text-xl 2xl:py-3 ${modifyClasses}`;
 

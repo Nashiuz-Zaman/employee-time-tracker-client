@@ -34,7 +34,7 @@ const ButtonBtn = ({
   const dangerClasses =
     "bg-red-700 border border-red-700 hover:bg-red-500 hover:border-red-500 text-white";
 
-  const allClasses = `block min-w-[8rem] w-max capitalize transition-all duration-default rounded-defaultLg text-center px-6 py-2 3xl:text-xl 2xl:py-3 ${modifyClasses}`;
+  const allClasses = `block min-w-[8rem] w-max capitalize transition-all duration-default rounded-defaultLg text-center px-6 py-2 3xl:text-xl 2xl:py-3 active:scale-95 ${modifyClasses}`;
 
   return (
     <button

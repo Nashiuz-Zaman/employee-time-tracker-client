@@ -8,14 +8,13 @@ import { homeTopBannerTextContent } from "../../../../data/homeUiContent";
 
 // hooks
 import useAuth from "../../../../hooks/useAuth";
+import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
 
 const Banner = () => {
   // extract heading and subheading
   const { heading, description1 } = homeTopBannerTextContent;
 
-  const { profileData } = useAuth();
-
-  console.log(profileData);
+  const { profileData, appLoading } = useAuth();
 
   return (
     <div className="grid grid-cols-1 gap-[5rem] lg:grid-cols-2 items-center">
@@ -26,8 +25,15 @@ const Banner = () => {
 
       {/* banner clock in */}
       <div>
-        {profileData && <ProgressTracker />}
-        {!profileData && <ClockInForm />}
+        {appLoading && (
+          <LoadingSpinner
+            text="Processing Data"
+            textSizeClass="text-4xl"
+            loaderSizeClass="text-4xl"
+          />
+        )}
+        {!appLoading && profileData && <ProgressTracker />}
+        {!appLoading && !profileData && <ClockInForm />}
       </div>
     </div>
   );

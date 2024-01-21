@@ -19,23 +19,31 @@ import BackdropBlur from "../shared/BackdropBlur/BackdropBlur";
 import { useSelector } from "react-redux";
 
 // server url
-import { serverUrl } from "../../data/serverUrl";
+// import { serverUrl } from "../../data/serverUrl";
 
 const PrimaryComponent = () => {
   const { open } = useSelector((store) => store.backdrop);
+  const { working, currentDuration } = useSelector((store) => store.workHours);
 
-  // useEffect(() => {
-  //   const sendTimeData = () => {
-  //     navigator.sendBeacon(`${serverUrl}`);
-  //   };
+  useEffect(() => {
+    const saveTime = () => {
+      if (working) {
+        localStorage.setItem("lastTime", new Date().toISOString());
+      } else {
+        localStorage.removeItem("lastTime");
+      }
 
-  //   window.addEventListener("beforeunload", sendTimeData);
+      localStorage.setItem("working", working ? "yes" : "no");
+      localStorage.removeItem("currentDuration");
+      localStorage.setItem("currentDuration", currentDuration);
+    };
 
-  //   return () => {
-  //     window.removeEventListener("beforeunload", sendTimeData);
-  //     sendTimeData();
-  //   };
-  // }, []);
+    window.addEventListener("beforeunload", saveTime);
+
+    return () => {
+      window.removeEventListener("beforeunload", saveTime);
+    };
+  }, [working, currentDuration]);
 
   return (
     <div className="text-textPrimary font-default min-h-screen flex flex-col max-w-[120rem] mx-auto overflow-x-hidden">

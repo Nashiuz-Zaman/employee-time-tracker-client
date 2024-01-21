@@ -8,15 +8,15 @@ import LoginFormWithImage from "./LoginFormWithImage/LoginFormWithImage";
 
 // hooks
 import useAuth from "../../../hooks/useAuth";
-import useRedirectDashboard from "../../../hooks/useRedirectDashboard";
+// import useRedirectDashboard from "../../../hooks/useRedirectDashboard";
 
 // data
 import { authImage } from "./../../../data/authUIContent";
 
 const LoginPage = () => {
   const { appLoading, dispatch, setLoginErrors, profileData } = useAuth();
-  const { state } = useLocation();
-  useRedirectDashboard(profileData, state);
+  // const { state } = useLocation();
+  // useRedirectDashboard(profileData, state);
 
   useEffect(() => {
     return () => {

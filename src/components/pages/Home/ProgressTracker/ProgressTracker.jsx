@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 // components
 import ProgressBtns from "../../../shared/ProgressBtns/ProgressBtns";
 import Countdown from "../../../shared/Countdown/Countdown";
+import LiveTime from "../../../shared/LiveTime/LiveTime";
 
 // redux
 import { useSelector } from "react-redux";
@@ -17,6 +18,8 @@ const ProgressTracker = ({ modifyClasses = "" }) => {
       <h2 className="text-center text-3xl mb-8 font-semibold">
         Have a good day at work!
       </h2>
+
+      <LiveTime modifyClasses="mb-8" />
 
       {/* progress buttons */}
       <ProgressBtns modifyClasses="mb-12" />

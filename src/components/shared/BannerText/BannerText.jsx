@@ -1,7 +1,13 @@
 // react
 import PropTypes from "prop-types";
 
+// hooks
+import useAuth from "../../../hooks/useAuth";
+
 function BannerText({ heading, description1 }) {
+  const { profileData } = useAuth();
+  console.log(profileData);
+
   return (
     <div className="w-full h-full flex items-center text-center lg:text-left">
       <div className="w-full space-y-4 lg:space-y-5">
@@ -11,7 +17,7 @@ function BannerText({ heading, description1 }) {
         </h1>
 
         <p className="font-bold text-3xl sm:text-4xl md:text-4xl 3xl:text-5xl">
-          {description1}
+          {profileData ? profileData.fullname : description1}
         </p>
       </div>
     </div>

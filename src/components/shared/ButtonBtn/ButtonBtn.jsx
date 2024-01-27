@@ -11,6 +11,7 @@ const ButtonBtn = ({
   modifyClasses = "",
   theme = "light",
   loading = false,
+  disabled = false,
 }) => {
   // common classes
   const outlinedClasses =
@@ -34,10 +35,11 @@ const ButtonBtn = ({
   const dangerClasses =
     "bg-red-700 border border-red-700 hover:bg-red-500 hover:border-red-500 text-white";
 
-  const allClasses = `block min-w-[8rem] w-max capitalize transition-all duration-default rounded-defaultLg text-center px-6 py-2 3xl:text-xl 2xl:py-3 active:scale-95 ${modifyClasses}`;
+  const allClasses = `block min-w-[8rem] w-max capitalize transition-all duration-default rounded-defaultLg text-center px-6 py-2 3xl:text-xl 2xl:py-3 active:scale-95 disabled:opacity-50 ${modifyClasses}`;
 
   return (
     <button
+      disabled={disabled}
       onClick={onClickFunction}
       // decide the design of button according to the props
       className={`${
@@ -67,6 +69,7 @@ ButtonBtn.propTypes = {
   modifyClasses: PropTypes.string,
   theme: PropTypes.string,
   loading: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default ButtonBtn;

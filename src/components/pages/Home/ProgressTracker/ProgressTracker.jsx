@@ -11,7 +11,7 @@ import LiveDate from "../../../shared/LiveDate/LiveDate";
 import { useSelector } from "react-redux";
 
 const ProgressTracker = ({ modifyClasses = "" }) => {
-  const { currentDuration } = useSelector((store) => store.workHours);
+  const { currentDuration } = useSelector((store) => store.workhour);
 
   return (
     <div className={`${modifyClasses}`}>

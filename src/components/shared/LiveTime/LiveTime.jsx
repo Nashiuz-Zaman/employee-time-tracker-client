@@ -5,7 +5,12 @@ import { useEffect, useState } from "react";
 // hooks
 import useGetTimeData from "../../../hooks/useGetTimeData";
 
-const LiveTime = ({ modifyClasses = "" }) => {
+const LiveTime = ({
+  text = "Time",
+  format12Hours = false,
+  modifyClasses = "",
+  noText = false,
+}) => {
   const { getTime, padTime } = useGetTimeData();
   const [time, setTime] = useState(null);
   const [partOfDay, setPartOfDay] = useState("");
@@ -31,18 +36,20 @@ const LiveTime = ({ modifyClasses = "" }) => {
     };
   }, [getTime, padTime, time]);
 
-  return (
-    <div className={modifyClasses}>
-      {time && (
-        <p className="text-center text-2xl font-semibold">
-          Current Time: {time.hours}:{time.minutes}:{time?.seconds} {partOfDay}
-        </p>
-      )}
-    </div>
-  );
+  if (time) {
+    return (
+      <p className={`text-center ${modifyClasses}`}>
+        {!noText && text}: {time.hours}:{time.minutes}:{time?.seconds}{" "}
+        {format12Hours && partOfDay}
+      </p>
+    );
+  }
 };
 
 LiveTime.propTypes = {
+  text: PropTypes.string,
+  noText: PropTypes.bool,
+  format12Hours: PropTypes.bool,
   modifyClasses: PropTypes.string,
 };
 

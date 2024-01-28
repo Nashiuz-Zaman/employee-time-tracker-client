@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import ProgressBtns from "../../../shared/ProgressBtns/ProgressBtns";
 import Countdown from "../../../shared/Countdown/Countdown";
 import LiveTime from "../../../shared/LiveTime/LiveTime";
+import LiveDate from "../../../shared/LiveDate/LiveDate";
 
 // redux
 import { useSelector } from "react-redux";
@@ -19,7 +20,11 @@ const ProgressTracker = ({ modifyClasses = "" }) => {
         Have a good day at work!
       </h2>
 
-      <LiveTime modifyClasses="mb-8" />
+      <div className="mb-8 space-y-2">
+        <LiveDate modifyClasses="text-xl font-semibold" />
+
+        <LiveTime modifyClasses="text-xl font-semibold" />
+      </div>
 
       {/* progress buttons */}
       <ProgressBtns modifyClasses="mb-12" />

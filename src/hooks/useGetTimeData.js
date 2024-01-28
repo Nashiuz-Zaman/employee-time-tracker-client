@@ -14,11 +14,12 @@ const useGetTimeData = () => {
 
   const getDate = useCallback(() => {
     const dateObject = new Date();
+    const monthName = dateObject.toLocaleString("en-us", { month: "short" });
     const dayOfTheMonth = dateObject.getDate();
     const month = dateObject.getMonth() + 1;
     const year = dateObject.getFullYear();
 
-    return { dayOfTheMonth, month, year };
+    return { dayOfTheMonth, month, year, monthName };
   }, []);
 
   const padTime = useCallback((data = 0) => {

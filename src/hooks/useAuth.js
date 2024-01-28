@@ -32,14 +32,7 @@ const useAuth = () => {
   // declare dispatch function
   const dispatch = useDispatch();
   // take states from redux store
-  const {
-    userShouldExist,
-    userAlreadyRegistered,
-    profileData,
-    appLoading,
-    loginErrors,
-    registrationErrors,
-  } = useSelector((store) => store.auth);
+  const { userShouldExist, profileData } = useSelector((store) => store.auth);
   const navigate = useNavigate();
 
   const [user, setUser] = useState(null);
@@ -152,13 +145,7 @@ const useAuth = () => {
     setLoginErrors,
     setRegistrationErrors,
     // auth properties
-    userShouldExist,
-    userAlreadyRegistered,
-    profileData,
     user,
-    appLoading,
-    loginErrors,
-    registrationErrors,
     // firebase auth related functions
     signup,
     loginEmail,

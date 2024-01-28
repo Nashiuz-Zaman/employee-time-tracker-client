@@ -7,14 +7,16 @@ import ProgressTracker from "../ProgressTracker/ProgressTracker";
 import { homeTopBannerTextContent } from "../../../../data/homeUiContent";
 
 // hooks
-import useAuth from "../../../../hooks/useAuth";
 import LoadingSpinner from "../../../shared/LoadingSpinner/LoadingSpinner";
+
+// redux
+import { useSelector } from "react-redux";
 
 const Banner = () => {
   // extract heading and subheading
   const { heading, description1 } = homeTopBannerTextContent;
 
-  const { profileData, appLoading } = useAuth();
+  const { profileData, appLoading } = useSelector((store) => store.auth);
 
   return (
     <div className="grid grid-cols-1 gap-[5rem] lg:grid-cols-2 items-center">

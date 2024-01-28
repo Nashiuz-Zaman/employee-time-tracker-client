@@ -1,12 +1,11 @@
 // react
 import PropTypes from "prop-types";
 
-// hooks
-import useAuth from "../../../hooks/useAuth";
+//redux
+import { useSelector } from "react-redux";
 
 function BannerText({ heading, description1 }) {
-  const { profileData } = useAuth();
-  console.log(profileData);
+  const { profileData } = useSelector((store) => store.auth);
 
   return (
     <div className="w-full h-full flex items-center text-center lg:text-left">

@@ -11,11 +11,11 @@ import {
   increaseDuration,
   setWorking,
   setCurrentDuration,
-} from "./../../../features/workHours/workHoursSlice";
+} from "../../../features/workhour/workhourSlice";
 
 const ProgressBtns = ({ modifyClasses = "" }) => {
   const dispatch = useDispatch();
-  const { currentDuration, working } = useSelector((store) => store.workHours);
+  const { currentDuration, working } = useSelector((store) => store.workhour);
 
   console.log(currentDuration);
 

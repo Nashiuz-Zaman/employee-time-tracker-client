@@ -18,12 +18,17 @@ import BackdropBlur from "../shared/BackdropBlur/BackdropBlur";
 // redux
 import { useSelector } from "react-redux";
 
+// hook
+import useWorkhoursCheck from "../../hooks/useWorkhoursCheck";
+
 // server url
 // import { serverUrl } from "../../data/serverUrl";
 
 const PrimaryComponent = () => {
   const { open } = useSelector((store) => store.backdrop);
-  const { working, currentDuration } = useSelector((store) => store.workHours);
+  const { working, currentDuration } = useSelector((store) => store.workhour);
+
+  useWorkhoursCheck();
 
   useEffect(() => {
     const saveTime = () => {

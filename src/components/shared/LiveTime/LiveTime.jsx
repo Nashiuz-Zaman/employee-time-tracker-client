@@ -17,8 +17,12 @@ const LiveTime = ({
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      const { hours, minutes, seconds, partOfDay } = getTime();
+      let { hours, minutes, seconds, partOfDay } = getTime();
       setPartOfDay(partOfDay);
+
+      if (format12Hours) {
+        hours = partOfDay === "PM" ? hours - 12 : hours;
+      }
 
       const timeDataArr = [hours, minutes, seconds].map((el) => padTime(el));
 
@@ -34,7 +38,7 @@ const LiveTime = ({
     return () => {
       clearTimeout(timer);
     };
-  }, [getTime, padTime, time]);
+  }, [getTime, padTime, time, format12Hours]);
 
   if (time) {
     return (

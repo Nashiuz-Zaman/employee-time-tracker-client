@@ -23,7 +23,7 @@ const ProgressTracker = ({ modifyClasses = "" }) => {
       <div className="mb-8 space-y-2">
         <LiveDate modifyClasses="text-xl font-semibold" />
 
-        <LiveTime modifyClasses="text-xl font-semibold" />
+        <LiveTime format12Hours={true} modifyClasses="text-xl font-semibold" />
       </div>
 
       {/* progress buttons */}

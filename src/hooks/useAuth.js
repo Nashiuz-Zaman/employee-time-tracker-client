@@ -1,5 +1,5 @@
 // react
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 // redux
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,7 @@ import app from "../firebase/firebase.config";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 // create auth instance
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 // take auth actions
 const { setUserShouldExist, setProfileData, setAppLoading } = authActions;
@@ -40,7 +40,6 @@ const useAuth = () => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, async (curUser) => {
       if (curUser) {
-        
         // this code should only run when the website is refreshed
         if (!profileData && userShouldExist) {
           // check which firebase user is logged in, send the email to database and bring their profile data

@@ -8,10 +8,9 @@ import { useDispatch } from "react-redux";
 import useToast from "./useToast";
 
 // firebase imports
-import app from "../firebase/firebase.config";
+import { auth } from "./useAuth";
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -19,9 +18,6 @@ import {
 
 // auth slice actions
 import { authActions } from "../features/auth/authSlice";
-
-// create auth instance
-const auth = getAuth(app);
 
 // take auth actions
 const { setUserShouldExist, setProfileData, setAppLoading } = authActions;

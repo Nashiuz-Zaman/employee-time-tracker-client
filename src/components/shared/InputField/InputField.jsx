@@ -4,7 +4,6 @@ import { useState } from "react";
 
 const InputField = ({
   type = "text",
-  defaultValue = "",
   placeholder = "Default placeholder",
   name = "",
   modifyClasses = "",
@@ -14,8 +13,9 @@ const InputField = ({
 
   return (
     <div
-      className={`border-b relative transition-all duration-default border-gray-400 text- ${modifyClasses}`}
+      className={`border-b relative transition-all duration-[30ms] border-gray-400 text- ${modifyClasses}`}
     >
+      {/* place holder */}
       <p
         className={`absolute transition-all duration-[inherit] ${
           focused
@@ -26,14 +26,14 @@ const InputField = ({
         {placeholder}
       </p>
 
+      {/* input field */}
       <input
         onFocus={() => setFocused(true)}
         onBlur={() => {
           setFocused(value.length ? true : false);
         }}
-        className={`block text-sm bg-transparent pt-4 pb-2 pr-4 text-textMediumLight focus:outline-none z-20`}
+        className={`block text-sm bg-transparent pt-4 pb-2 pr-4 text-textMediumLight focus:outline-none relative z-20`}
         type={type}
-        defaultValue={defaultValue}
         name={name}
         onChange={(e) => setValue(e.target.value)}
         value={value}
@@ -44,7 +44,6 @@ const InputField = ({
 
 InputField.propTypes = {
   type: PropTypes.string,
-  defaultValue: PropTypes.string,
   placeholder: PropTypes.string,
   name: PropTypes.string,
   modifyClasses: PropTypes.string,

@@ -5,8 +5,7 @@ import { useState } from "react";
 // react icons
 import { IoEye, IoEyeOff } from "react-icons/io5";
 
-const PasswordInput = ({
-  defaultValue = "",
+const PasswordInputField = ({
   placeholder = "Default placeholder",
   name = "",
   modifyClasses = "",
@@ -36,7 +35,6 @@ const PasswordInput = ({
         }}
         className={`block text-sm bg-transparent pt-4 pb-2 pr-4 text-textMediumLight focus:outline-none relative z-20`}
         type={showPassword ? "text" : "password"}
-        defaultValue={defaultValue}
         name={name}
         onChange={(e) => setValue(e.target.value)}
         value={value}
@@ -61,11 +59,10 @@ const PasswordInput = ({
   );
 };
 
-PasswordInput.propTypes = {
-  defaultValue: PropTypes.string,
+PasswordInputField.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string,
   modifyClasses: PropTypes.string,
 };
 
-export default PasswordInput;
+export default PasswordInputField;

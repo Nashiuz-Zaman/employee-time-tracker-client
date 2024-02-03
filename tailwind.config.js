@@ -38,6 +38,7 @@ export default {
         lightGray: "#f5f5f5",
         lightBorder: "#ddd",
         blackLight: "#111",
+        darkThemeBg: "#202124",
       },
       fontFamily: {
         default: "'Inter', sans-serif",

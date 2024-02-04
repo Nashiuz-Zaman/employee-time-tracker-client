@@ -1,10 +1,8 @@
 // react
 import PropTypes from "prop-types";
-import { useState } from "react";
 
 // react icons
 import { IoCloudUpload } from "react-icons/io5";
-import { IoEye, IoEyeOff } from "react-icons/io5";
 
 // react router import
 import { Link } from "react-router-dom";
@@ -14,16 +12,12 @@ import useRegistrationForm from "../../../../hooks/useRegistrationForm";
 
 // shared component imports
 import ButtonBtn from "../../../shared/ButtonBtn/ButtonBtn";
-
 import FileUploadBtn from "../../../shared/FileUploadBtn/FileUploadBtn";
+import InputField from "../../../shared/InputField/InputField";
+import PasswordInputField from "../../../shared/PasswordInputField/PasswordInputField";
 
 const RegistrationForm = ({ loading = false, modifyClasses }) => {
   const { registrationErrors, handleSubmit } = useRegistrationForm();
-  const [showPassword, setShowPassword] = useState(false);
-
-  // common styles for input and label jsx elements
-  const inputClasses =
-    "block w-full rounded-default border border-textLight py-2 px-4 text-textPrimary";
 
   return (
     <div
@@ -37,63 +31,29 @@ const RegistrationForm = ({ loading = false, modifyClasses }) => {
       {/* form */}
       <form noValidate onSubmit={handleSubmit} className="w-full">
         <div className={`${loading ? "opacity-50" : "opacity-100"}`}>
-          {/* username field */}
-          <div className="mb-4">
-            <input
-              className={inputClasses}
-              name="name"
-              type="text"
-              id="fullname"
-              placeholder="Full Name"
-            />
-          </div>
+          <div className="space-y-5">
+            {/* username field */}
+            <InputField name="name" placeholder="Full Name" />
 
-          {/* photo upload button */}
-          <div className="mb-4 grid grid-cols-2 items-center">
-            <p>Your Photo</p>
+            {/* photo upload  */}
+            <div className="mb-4 grid grid-cols-2 items-center">
+              <p>Your Photo</p>
 
-            <FileUploadBtn>
-              Browse <IoCloudUpload className="text-xl" />
-            </FileUploadBtn>
-          </div>
+              <FileUploadBtn>
+                Browse <IoCloudUpload className="text-xl" />
+              </FileUploadBtn>
+            </div>
 
-          {/* email field */}
-          <div className="mb-4">
-            <input
-              className={inputClasses}
+            {/* email field */}
+            <InputField
               type="email"
-              id="email"
               name="email"
-              placeholder="Email"
-            />
-          </div>
-
-          {/* password field */}
-          <div className="relative">
-            <input
-              className={inputClasses}
-              type={showPassword ? "text" : "password"}
-              id="password"
-              name="password"
-              placeholder="Password"
+              placeholder="Employee Email"
+              modifyClasses="mb-4"
             />
 
-            {/* show/no show password buttons */}
-            <button
-              aria-label="Show or not show password button"
-              type="button"
-              className="block w-max absolute top-1/2 -translate-y-1/2 right-3 text-textPrimary"
-              onClick={(e) => {
-                e.preventDefault();
-                setShowPassword((prev) => !prev);
-              }}
-            >
-              {showPassword ? (
-                <IoEyeOff className="text-xl" />
-              ) : (
-                <IoEye className="text-xl" />
-              )}
-            </button>
+            {/* password field */}
+            <PasswordInputField name="password" placeholder="Password" />
           </div>
 
           {/* show errors here */}

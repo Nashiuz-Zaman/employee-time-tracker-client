@@ -6,15 +6,21 @@ import { useLocation } from "react-router-dom";
 import RegistrationFormWithImage from "./RegistrationFormWithImage/RegistrationFormWithImage";
 
 // hook
-import useAuth from "../../../hooks/useAuth";
 import useRedirectDashboard from "../../../hooks/useRedirectDashboard";
 
 // data
 import { authImage } from "../../../data/authUIContent";
 
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../../features/auth/authSlice";
+
+// extract setError method
+const { setRegistrationErrors } = authActions;
+
 const RegistrationPage = () => {
-  const { appLoading, dispatch, setRegistrationErrors, profileData } =
-    useAuth();
+  const dispatch = useDispatch();
+  const { profileData, appLoading } = useSelector((store) => store.auth);
   const { state } = useLocation();
 
   //if user profile already exists then redirect to dashboard
@@ -25,7 +31,7 @@ const RegistrationPage = () => {
     return () => {
       dispatch(setRegistrationErrors([]));
     };
-  }, [dispatch, setRegistrationErrors]);
+  }, [dispatch]);
 
   return (
     <div className="min-h-screen flex justify-center items-center py-customSm md:py-custom2md lg:py-customSm">

@@ -8,11 +8,15 @@ import { Link } from "react-router-dom";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import ButtonBtn from "../../../shared/ButtonBtn/ButtonBtn";
 
-// hook
-import useAuth from "../../../../hooks/useAuth";
+// redux
+import { useSelector } from "react-redux";
+
+// auth slice methods
+import { authActions } from "../../../../features/auth/authSlice";
+const { setUserAlreadyRegistered } = authActions;
 
 const RegistrationFormWithImage = ({ imageSource, appLoading }) => {
-  const { userAlreadyRegistered, setUserAlreadyRegistered } = useAuth();
+  const { userAlreadyRegistered } = useSelector((store) => store.auth);
 
   return (
     <div

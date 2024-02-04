@@ -5,6 +5,9 @@ import { useEffect } from "react";
 // components
 import ButtonBtn from "./../ButtonBtn/ButtonBtn";
 
+// hooks
+import useWorkhoursData from "../../../hooks/useWorkhoursData";
+
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -16,6 +19,8 @@ import {
 const ProgressBtns = ({ modifyClasses = "" }) => {
   const dispatch = useDispatch();
   const { currentDuration, working } = useSelector((store) => store.workhour);
+  const { profileData } = useSelector((store) => store.auth);
+  const { createWorkhour } = useWorkhoursData();
 
   console.log(currentDuration);
 
@@ -55,7 +60,8 @@ const ProgressBtns = ({ modifyClasses = "" }) => {
   }, [currentDuration, dispatch, working]);
 
   const handleStart = () => {
-    dispatch(setWorking(true));
+    // dispatch(setWorking(true));
+    createWorkhour(profileData);
   };
 
   const handleEnd = () => {

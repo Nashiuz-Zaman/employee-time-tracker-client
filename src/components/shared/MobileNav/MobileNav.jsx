@@ -16,7 +16,10 @@ import ButtonBtn from "./../ButtonBtn/ButtonBtn";
 // hook
 import useMobileNavigation from "../../../hooks/useMobileNavigation";
 import useEscapeClose from "../../../hooks/useEscapeClose";
-import useAuth from "../../../hooks/useAuth";
+import useFirebaseMethods from "./../../../hooks/useFirebaseMethods";
+
+// redux
+import { useSelector } from "react-redux";
 
 // must import data here to make this component work
 import { navOptions } from "../../../data/navigationOptions";
@@ -27,7 +30,9 @@ const MobileNav = ({ modifyClasses = "" }) => {
   // extract mobile nav functionality
   const { mobileNavOpen, openMobileNav, closeMobileNav } =
     useMobileNavigation();
-  const { profileData, logout } = useAuth();
+
+  const { profileData } = useSelector((store) => store.auth);
+  const { logout } = useFirebaseMethods();
 
   // add escape key close functionality
   useEscapeClose(closeMobileNav);

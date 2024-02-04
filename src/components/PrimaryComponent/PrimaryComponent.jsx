@@ -20,6 +20,7 @@ import { useSelector } from "react-redux";
 
 // hook
 import useWorkhoursCheck from "../../hooks/useWorkhoursCheck";
+import useAuth from "../../hooks/useAuth";
 
 // server url
 // import { serverUrl } from "../../data/serverUrl";
@@ -29,6 +30,7 @@ const PrimaryComponent = () => {
   const { working, currentDuration } = useSelector((store) => store.workhour);
 
   useWorkhoursCheck();
+  useAuth();
 
   useEffect(() => {
     const saveTime = () => {

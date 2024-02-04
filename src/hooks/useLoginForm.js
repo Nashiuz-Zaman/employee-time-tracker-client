@@ -3,24 +3,25 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 // custom hook
-import useAuth from "./useAuth";
 import useAxios from "./useAxios";
 import useToast from "./useToast";
+import useFirebaseMethods from "./useFirebaseMethods";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../features/auth/authSlice";
 
 // api endpoints
 import { userAuthEndpoint } from "../data/apiData";
 
+const { setUserShouldExist, setProfileData, setLoginErrors, setAppLoading } =
+  authActions;
+
 const useLoginForm = () => {
   // extract functions from auth context
-  const {
-    dispatch,
-    loginEmail,
-    setAppLoading,
-    setUserShouldExist,
-    setProfileData,
-    loginErrors,
-    setLoginErrors,
-  } = useAuth();
+  const { loginErrors } = useSelector((store) => store.auth);
+  const { loginEmail } = useFirebaseMethods();
+  const dispatch = useDispatch();
 
   // react toastify
   const { showToast } = useToast();

@@ -1,13 +1,16 @@
 // react router dom imports
 import { useNavigate } from "react-router-dom";
 
-// custom hooks import
-import useAuth from "./useAuth";
-// import useLoginRegistrationProvider from "./useLoginRegistrationProvider";
+//  hooks
 import useAxios from "./../hooks/useAxios";
+import useFirebaseMethods from "./useFirebaseMethods";
 
 // normal axios import
 import axios from "axios";
+
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../features/auth/authSlice";
 
 // api endpoints
 import { userCreationEndpoint, userCheckEndpoint } from "../data/apiData";
@@ -16,20 +19,21 @@ import { userCreationEndpoint, userCheckEndpoint } from "../data/apiData";
 const imageUploadAPIKey = import.meta.env.VITE_imgbbApiKey;
 const imageUploadAPI = `https://api.imgbb.com/1/upload?key=${imageUploadAPIKey}`;
 
+const {
+  setUserAlreadyRegistered,
+  setAppLoading,
+  setUserShouldExist,
+  setProfileData,
+  setRegistrationErrors,
+} = authActions;
+
 // custom hook body starts here
 const useRegistrationForm = () => {
   // extract functions from auth context
-  const {
-    dispatch,
-    signup,
-    updateUserProfile,
-    setUserAlreadyRegistered,
-    setAppLoading,
-    setUserShouldExist,
-    setProfileData,
-    registrationErrors,
-    setRegistrationErrors,
-  } = useAuth();
+  const dispatch = useDispatch();
+  const { registrationErrors } = useSelector((store) => store.auth);
+
+  const { signup, updateUserProfile } = useFirebaseMethods();
 
   // axios extraction
   const { axiosCustom } = useAxios();

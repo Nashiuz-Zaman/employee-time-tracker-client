@@ -1,23 +1,24 @@
 // react redux
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 // redux
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 
 // hooks
-import useToast from "./useToast";
+import useToast from './useToast';
 
 // firebase imports
-import { auth } from "./useAuth";
+import { auth } from './useAuth';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-} from "firebase/auth";
+} from 'firebase/auth';
 
 // auth slice actions
-import { authActions } from "../features/auth/authSlice";
+import { authActions } from '../features/auth/authSlice';
+import { useCallback } from 'react';
 
 // take auth actions
 const { setUserShouldExist, setProfileData, setAppLoading } = authActions;
@@ -50,19 +51,19 @@ const useFirebaseMethods = () => {
   };
 
   // user logout function
-  const logout = () => {
+  const logout = useCallback(() => {
     dispatch(setAppLoading(true));
     signOut(auth)
       .then(() => {
         dispatch(setProfileData(null));
         dispatch(setUserShouldExist(false));
-        localStorage.removeItem("tokenExists");
+        localStorage.removeItem('tokenExists');
         dispatch(setAppLoading(false));
-        showToast("Logged Out Successfully", "success");
+        showToast('Logged Out Successfully', 'success');
       })
-      .catch((error) => console.error(error));
-    navigate("/");
-  };
+      .catch(error => console.error(error));
+    navigate('/login');
+  }, [navigate, showToast, dispatch]);
 
   return {
     // firebase auth related functions

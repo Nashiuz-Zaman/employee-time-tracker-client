@@ -1,12 +1,12 @@
 // axios
-import axios from "axios";
+import axios from 'axios';
 
 // server url
-import { serverUrl } from "../data/serverUrl";
+import { serverUrl } from '../data/serverUrl';
 
 const axiosCustom = axios.create({
   baseURL: serverUrl,
-  withCredentials: true,
+  // withCredentials: true,
 });
 
 // const axiosSecure = axios.create({

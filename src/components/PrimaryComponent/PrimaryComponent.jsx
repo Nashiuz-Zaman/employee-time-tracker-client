@@ -1,6 +1,3 @@
-// react
-import { useEffect } from "react";
-
 // react router import
 import { RouterProvider } from "react-router-dom";
 
@@ -19,38 +16,14 @@ import BackdropBlur from "../shared/BackdropBlur/BackdropBlur";
 import { useSelector } from "react-redux";
 
 // hook
-import useWorkhoursCheck from "../../hooks/useWorkhoursCheck";
+import useWorkhoursProcess from "../../hooks/useWorkhoursProcess";
 import useAuth from "../../hooks/useAuth";
-
-// server url
-// import { serverUrl } from "../../data/serverUrl";
 
 const PrimaryComponent = () => {
   const { open } = useSelector((store) => store.backdrop);
-  const { working, currentDuration } = useSelector((store) => store.workhour);
 
-  useWorkhoursCheck();
   useAuth();
-
-  useEffect(() => {
-    const saveTime = () => {
-      if (working) {
-        localStorage.setItem("lastTime", new Date().toISOString());
-      } else {
-        localStorage.removeItem("lastTime");
-      }
-
-      localStorage.setItem("working", working ? "yes" : "no");
-      localStorage.removeItem("currentDuration");
-      localStorage.setItem("currentDuration", currentDuration);
-    };
-
-    window.addEventListener("beforeunload", saveTime);
-
-    return () => {
-      window.removeEventListener("beforeunload", saveTime);
-    };
-  }, [working, currentDuration]);
+  useWorkhoursProcess();
 
   return (
     <div className="text-textPrimary font-default min-h-screen flex flex-col max-w-[120rem] mx-auto overflow-x-hidden">

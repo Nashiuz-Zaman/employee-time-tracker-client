@@ -14,8 +14,8 @@ export default {
         customLg: "11rem",
         custom2md: "7.5rem",
         customMd: "6rem",
-        customSm: "4.5rem",
-        customXsm: "3rem",
+        customSm: "4.2rem",
+        customXsm: "2.8rem",
         custom2xsm: "1.6rem",
       },
       boxShadow: {
